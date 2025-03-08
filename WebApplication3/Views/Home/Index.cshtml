@@ -1,0 +1,23 @@
+﻿@model WebApplication3.Models.IEnumerable<Film>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@foreach (var item in Model)
+{
+<div class="movie-container">
+    <div class="movie-poster">
+        <img src="@Model.PosterUrl" alt="Постер фильма">
+    </div>
+    <div class="movie-info">
+        <h2>@Model.Title (@Model.Year)</h2>
+        <p><strong>Жанр:</strong> @Model.Genre</p>
+        <p>@Model.Description</p>
+    </div>
+    <div class="movie-actions">
+        <button class="btn btn-primary">Купить билет</button>
+        <button class="btn btn-secondary">Смотреть трейлер</button>
+    </div>
+</div>
+}
