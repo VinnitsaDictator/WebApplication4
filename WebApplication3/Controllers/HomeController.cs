@@ -6,17 +6,19 @@ using System;
 using WebApplication3.DBcontext;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using WebApplication3.DBcontext.WebCinema.Data;
 
 namespace WebApplication3.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly DbContext context;
+   private readonly ILogger<HomeController> _logger;
+    private readonly ApplicationDbContext context;
 
-    public HomeController()
+    public HomeController(ILogger<HomeController> logger)
     {
-      
+        _logger = logger;
+        context = new ApplicationDbContext();
     }
 
     public IActionResult Privacy()
@@ -33,6 +35,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
        
-        return View();
+        return View(context.Films.ToList());
     }
+
 }

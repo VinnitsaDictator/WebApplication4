@@ -1,4 +1,4 @@
-﻿@model WebApplication3.Models.IEnumerable<Film>
+﻿@model List<Film>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -8,12 +8,12 @@
 {
 <div class="movie-container">
     <div class="movie-poster">
-        <img src="@Model.PosterUrl" alt="Постер фильма">
+            <img src="@item.PosterUrl" alt="Постер фильма">
     </div>
     <div class="movie-info">
-        <h2>@Model.Title (@Model.Year)</h2>
-        <p><strong>Жанр:</strong> @Model.Genre</p>
-        <p>@Model.Description</p>
+            <h2>@item.Title (@item.Year)</h2>
+            <p><strong>Жанр:</strong> @item.Genre</p>
+            <p>@item.Description</p>
     </div>
     <div class="movie-actions">
         <button class="btn btn-primary">Купить билет</button>
