@@ -151,8 +151,8 @@ namespace WebApplication3.Migrations
                 columns: new[] { "Id", "Description", "Duration", "Genre", "PosterUrl", "Title", "TrailerUrl", "Year" },
                 values: new object[,]
                 {
-                    { 1, "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", 148, "Sci-Fi", "https://example.com/inception-poster.jpg", "Inception", "https://www.youtube.com/watch?v=YoHD9XEInc0", 2010 },
-                    { 2, "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", 136, "Sci-Fi", "https://example.com/matrix-poster.jpg", "The Matrix", "https://www.youtube.com/watch?v=vKQi3bBA1y8", 1999 }
+                    { 1, "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", 148, "Sci-Fi", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbJaAaxjoUE666w-5xxhVconbUkMq-u7ps0g&s", "Inception", "https://www.youtube.com/watch?v=YoHD9XEInc0", 2010 },
+                    { 2, "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", 136, "Sci-Fi", "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.png", "The Matrix", "https://www.youtube.com/watch?v=vKQi3bBA1y8", 1999 }
                 });
 
             migrationBuilder.InsertData(

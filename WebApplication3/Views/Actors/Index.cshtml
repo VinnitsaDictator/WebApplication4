@@ -1,0 +1,45 @@
+﻿@model List<Actor>
+@{
+    ViewData["Title"] = "Actors";
+}
+
+<h1>Actors</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Дата рождения</th>
+            <th>Биография</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var actor in Model)
+        {
+            <tr>
+                <td>@actor.Name</td>
+                <td>@actor.BirthDate?.ToString("dd.MM.yyyy")</td>
+                <td>@actor.Biography</td>
+                <td>
+                    <button class="btn btn-primary" onclick="addActor(@actor.Id)">Добавить</button>
+                    <button class="btn btn-danger" onclick="deleteActor(@actor.Id)">Удалить</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function addActor(actorId) {
+        // Реализация добавления актера
+        console.log("Добавить актера с ID: " + actorId);
+    }
+
+    function deleteActor(actorId) {
+        // Реализация удаления актера
+        console.log("Удалить актера с ID: " + actorId);
+    }
+</script>
+
+

@@ -12,7 +12,7 @@ using WebApplication3.DBcontext.WebCinema.Data;
 namespace WebApplication3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250308165949_InitialCreate")]
+    [Migration("20250310175132_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -158,7 +158,7 @@ namespace WebApplication3.Migrations
                             Description = "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
                             Duration = 148,
                             Genre = "Sci-Fi",
-                            PosterUrl = "https://example.com/inception-poster.jpg",
+                            PosterUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbJaAaxjoUE666w-5xxhVconbUkMq-u7ps0g&s",
                             Title = "Inception",
                             TrailerUrl = "https://www.youtube.com/watch?v=YoHD9XEInc0",
                             Year = 2010
@@ -169,7 +169,7 @@ namespace WebApplication3.Migrations
                             Description = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
                             Duration = 136,
                             Genre = "Sci-Fi",
-                            PosterUrl = "https://example.com/matrix-poster.jpg",
+                            PosterUrl = "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.png",
                             Title = "The Matrix",
                             TrailerUrl = "https://www.youtube.com/watch?v=vKQi3bBA1y8",
                             Year = 1999
