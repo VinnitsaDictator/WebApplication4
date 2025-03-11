@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WebApplication3.Controllers
 {
-    public class ActorController : Controller
+    public class ActorsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ActorController(ApplicationDbContext context)
+        public ActorsController(ApplicationDbContext context)
         {
             _context = context;
         }
