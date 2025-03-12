@@ -20,5 +20,42 @@ namespace WebApplication3.Controllers
         {
             return View(_context.Actors.ToList());
         }
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var actor = _context.Actors.Find(id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+
+            _context.Actors.Remove(actor);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: ActorController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Actor actor)
+        {
+            if (!ModelState.IsValid)
+                return View(actor);
+
+            _context.Actors.Add(actor);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
     }
 }

@@ -5,6 +5,10 @@
 
 <h1>Actors</h1>
 
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить актера</a>
+</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,8 +26,10 @@
                 <td>@actor.BirthDate?.ToString("dd.MM.yyyy")</td>
                 <td>@actor.Biography</td>
                 <td>
-                    <button class="btn btn-primary" onclick="addActor(@actor.Id)">Добавить</button>
-                    <button class="btn btn-danger" onclick="deleteActor(@actor.Id)">Удалить</button>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@actor.Id" />
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
                 </td>
             </tr>
         }
@@ -35,11 +41,4 @@
         // Реализация добавления актера
         console.log("Добавить актера с ID: " + actorId);
     }
-
-    function deleteActor(actorId) {
-        // Реализация удаления актера
-        console.log("Удалить актера с ID: " + actorId);
-    }
 </script>
-
-
