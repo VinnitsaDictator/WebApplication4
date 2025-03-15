@@ -26,19 +26,52 @@
                 <td>@actor.BirthDate?.ToString("dd.MM.yyyy")</td>
                 <td>@actor.Biography</td>
                 <td>
-                    <form asp-action="Delete" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="@actor.Id" />
-                        <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@actor.Id" data-bs-name="@actor.Name">Удалить</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<script>
-    function addActor(actorId) {
-        // Реализация добавления актера
-        console.log("Добавить актера с ID: " + actorId);
-    }
-</script>
+<!-- Delete Confirmation Modal -->
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Удалить актера</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить <span class="name"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                <form id="deleteForm" method="post" asp-action="Delete">
+                    <input type="hidden" name="id" id="actorId" />
+                    <button type="submit" class="btn btn-danger">Да</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var modal = document.getElementById('deleteModal')
+
+        modal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            var button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            var name = button.getAttribute('data-bs-name')
+            var id = button.getAttribute('data-bs-id')
+
+            // Update the modal's content.
+            var textName = modal.querySelector('.modal-body .name')
+            textName.textContent = name
+
+            var actorIdInput = modal.querySelector('#actorId')
+            actorIdInput.value = id
+        })
+    </script>
+}

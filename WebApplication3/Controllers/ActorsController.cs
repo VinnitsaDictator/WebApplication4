@@ -20,8 +20,22 @@ namespace WebApplication3.Controllers
         {
             return View(_context.Actors.ToList());
         }
-        [HttpPost]
+
+        [HttpGet]
         public IActionResult Delete(int id)
+        {
+            var actor = _context.Actors.Find(id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+
+            return View(actor);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
         {
             var actor = _context.Actors.Find(id);
             if (actor == null)
@@ -34,6 +48,7 @@ namespace WebApplication3.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -53,9 +68,5 @@ namespace WebApplication3.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
-
-
     }
 }
