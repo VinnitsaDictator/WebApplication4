@@ -6,14 +6,17 @@
     <div class="col-md-6">
         <label class="form-label">Name</label>
         <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
+        <span asp-validation-for="Name" class="form-text text-danger"></span>
     </div>
     <div class="col-md-6">
         <label class="form-label">BirthDate</label>
         <input asp-for="BirthDate" type="date" class="form-control" placeholder="Enter birthdate">
+        <span asp-validation-for="BirthDate" class="form-text text-danger"></span>
     </div>
     <div class="col-md-12">
         <label class="form-label">Biography</label>
         <textarea asp-for="Biography" class="form-control" placeholder="Enter biography"></textarea>
+        <span asp-validation-for="Biography" class="form-text text-danger"></span>
     </div>
 
     <div class="col-md-6">
@@ -23,3 +26,11 @@
         <a asp-action="Index" class="btn btn-dark w-100">Back</a>
     </div>
 </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
