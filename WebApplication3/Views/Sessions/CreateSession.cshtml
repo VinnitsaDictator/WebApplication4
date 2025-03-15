@@ -1,0 +1,34 @@
+﻿@model Session
+@{
+    ViewData["Title"] = "Create Session";
+}
+
+<h1>Create New Session</h1>
+
+<form class="row g-3" asp-action="CreateSession" method="post">
+    <div class="col-md-6">
+        <label class="form-label">Film</label>
+        <select asp-for="FilmId" class="form-control" asp-items="ViewBag.Films"></select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Date and Time</label>
+        <input asp-for="Date" type="datetime-local" class="form-control" placeholder="Enter date and time">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Hall</label>
+        <input asp-for="Hall" type="text" class="form-control" placeholder="Enter hall">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Price</label>
+        <input asp-for="Price" type="number" step="0.01" class="form-control" placeholder="Enter price">
+    </div>
+
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-primary w-100">Create</button>
+    </div>
+    <div class="col-md-6">
+        <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+    </div>
+</form>
+
+

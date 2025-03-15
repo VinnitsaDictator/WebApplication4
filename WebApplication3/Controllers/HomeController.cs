@@ -37,5 +37,24 @@ public class HomeController : Controller
        
         return View(context.Films.ToList());
     }
+    // GET: HomeController/CreateFilm
+    [HttpGet]
+    public IActionResult CreateFilm()
+    {
+        return View();
+    }
 
+    // POST: HomeController/CreateFilm
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult CreateFilm(Film film)
+    {
+        if (!ModelState.IsValid)
+            return View(film);
+
+        context.Films.Add(film);
+        context.SaveChanges();
+
+        return RedirectToAction(nameof(Index));
+    }
 }

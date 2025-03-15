@@ -1,20 +1,26 @@
 ﻿@model List<Film>
 
+<h1>Films</h1>
+
+<p>
+    <a asp-action="CreateFilm" class="btn btn-primary">Добавить фильм</a>
+</p>
 
 @foreach (var item in Model)
 {
-<div class="movie-container">
-    <div class="movie-poster">
-            <img src="@item.PosterUrl"  alt="Постер фильма">
-    </div>
-    <div class="movie-info">
+    <div class="movie-container">
+        <div class="movie-poster">
+            <img src="@item.PosterUrl" alt="Постер фильма">
+        </div>
+        <div class="movie-info">
             <h2>@item.Title (@item.Year)</h2>
             <p><strong>Жанр:</strong> @item.Genre</p>
             <p>@item.Description</p>
+        </div>
+        <div class="movie-actions">
+            <button class="btn btn-primary">Купить билет</button>
+            <button class="btn btn-secondary">Смотреть трейлер</button>
+        </div>
     </div>
-    <div class="movie-actions">
-        <button class="btn btn-primary">Купить билет</button>
-        <button class="btn btn-secondary">Смотреть трейлер</button>
-    </div>
-</div>
 }
+
