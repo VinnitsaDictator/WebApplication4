@@ -68,5 +68,30 @@ namespace WebApplication3.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        // GET: ActorController/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var actor = await _context.Actors.FindAsync(id);
+            if (actor == null) return NotFound();
+
+            return View(actor);
+        }
+
+        // POST: ActorController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Biography,BirthDate")] Actor actor)
+        {
+            if (id != actor.Id) return NotFound();
+
+            if (!ModelState.IsValid) return View(actor);
+
+            _context.Update(actor);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

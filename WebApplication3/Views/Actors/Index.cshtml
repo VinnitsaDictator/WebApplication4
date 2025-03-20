@@ -26,6 +26,7 @@
                 <td>@actor.BirthDate?.ToString("dd.MM.yyyy")</td>
                 <td>@actor.Biography</td>
                 <td>
+                    <a asp-action="Edit" asp-route-id="@actor.Id" class="btn btn-warning">Edit</a>
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@actor.Id" data-bs-name="@actor.Name">Удалить</button>
                 </td>
             </tr>
