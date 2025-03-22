@@ -10,33 +10,54 @@
     <a asp-action="CreateSession" class="btn btn-primary">Добавить сеанс</a>
 </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Фильм</th>
-            <th>Дата и время</th>
-            <th>Зал</th>
-            <th>Цена</th>
-            <th>Действия</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var session in Model)
-        {
-            <tr>
-                <td>@session.Film.Title</td>
-                <td>@session.Date.ToString("dd.MM.yyyy HH:mm")</td>
-                <td>@session.Hall</td>
-                <td>@session.Price.ToString("C")</td>
-                <td>
-                    <form asp-action="Delete" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="@session.Id" />
-                        <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var session in Model)
+    {
+        <div class="col-md-4">
+            @await Html.PartialAsync("SessionCard", session)
+        </div>
+    }
+</div>
 
+<!-- Delete Confirmation Modal -->
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Удалить сеанс</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить сеанс фильма <span class="title"></span>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                <form id="deleteForm" method="post" asp-action="Delete">
+                    <input type="hidden" name="id" id="sessionId" />
+                    <button type="submit" class="btn btn-danger">Да</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+@section Scripts {
+    <script>
+        var modal = document.getElementById('deleteModal')
+
+        modal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            var button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            var title = button.getAttribute('data-bs-title')
+            var id = button.getAttribute('data-bs-id')
+
+            // Update the modal's content.
+            var textTitle = modal.querySelector('.modal-body .title')
+            textTitle.textContent = title
+
+            var sessionIdInput = modal.querySelector('#sessionId')
+            sessionIdInput.value = id
+        })
+    </script>
+}
