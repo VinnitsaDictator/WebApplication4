@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication3.DBcontext.WebCinema.Data;
+using Microsoft.AspNetCore.Identity;
+using WebApplication3.Models;
 
 namespace WebApplication3
 {
@@ -13,6 +15,9 @@ namespace WebApplication3
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDistributedMemoryCache();
@@ -37,12 +42,15 @@ namespace WebApplication3
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapRazorPages();
 
             app.Run();
         }
