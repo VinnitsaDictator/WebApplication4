@@ -27,6 +27,15 @@
         {
             base.OnModelCreating(modelBuilder);
 
+            // Настройка таблицы для User
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("AspNetUsers"); // Убедитесь, что таблица называется "AspNetUsers"
+                entity.Property(e => e.Name).HasMaxLength(100).IsRequired(); // Поле Name
+                entity.Property(e => e.BirthDate).IsRequired(); // Поле BirthDate
+            });
+
+            // Пример данных для других сущностей
             modelBuilder.Entity<Film>().HasData(
                 new Film { Id = 1, Title = "Inception", Description = "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", Genre = "Sci-Fi", Duration = 148, TrailerUrl = "https://www.youtube.com/watch?v=YoHD9XEInc0", Year = 2010, PosterUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbJaAaxjoUE666w-5xxhVconbUkMq-u7ps0g&s" },
                 new Film { Id = 2, Title = "The Matrix", Description = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", Genre = "Sci-Fi", Duration = 136, TrailerUrl = "https://www.youtube.com/watch?v=vKQi3bBA1y8", Year = 1999, PosterUrl = "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.png" }
@@ -45,8 +54,8 @@
             );
 
             modelBuilder.Entity<Ticket>().HasData(
-                new Ticket { Id = 1, SessionId = 1,  Status = "Booked" },
-                new Ticket { Id = 2, SessionId = 2,  Status = "Booked" }
+                new Ticket { Id = 1, SessionId = 1, Status = "Booked" },
+                new Ticket { Id = 2, SessionId = 2, Status = "Booked" }
             );
 
             modelBuilder.Entity<Film>()
@@ -59,5 +68,6 @@
                     new { FilmsId = 2, ActorsId = 4 }
                 ));
         }
+
     }
 }
