@@ -24,12 +24,15 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Sessions/Create
+       
         [HttpGet]
         public IActionResult CreateSession()
         {
             ViewBag.Films = new SelectList(_context.Films, "Id", "Title");
             return View();
         }
+
+
 
         // POST: Sessions/Create
         [HttpPost]
@@ -47,6 +50,7 @@ namespace WebApplication3.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
 
         // POST: Sessions/Delete/5
         [HttpPost]

@@ -50,6 +50,7 @@ namespace WebApplication3.Areas.Identity.Pages.Account
 
 
 
+
         public void OnGet(string returnUrl = null)
         {
             ReturnUrl = returnUrl ?? Url.Content("~/"); // Установка значения ReturnUrl
