@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication3.DBcontext.WebCinema.Data;
 using WebApplication3.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace WebApplication3.Controllers
 {
@@ -29,7 +30,7 @@ namespace WebApplication3.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(actor);
         }
 
