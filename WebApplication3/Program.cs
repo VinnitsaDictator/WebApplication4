@@ -19,14 +19,21 @@ namespace WebApplication3
             builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            builder.Services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AuthorizeAreaFolder("Identity", "/Account");
+        options.Conventions.AllowAnonymousToAreaPage("Identity", "/Account/Register");
+    });
+
 
             builder.Services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
-                options.Password.RequireNonAlphanumeric = true; // Разрешает символы
-                options.Password.RequiredLength = 6; // Минимальная длина пароля
+                options.Password.RequireNonAlphanumeric = true; 
+                options.Password.RequiredLength = 6; 
             });
 
             builder.Services.AddControllersWithViews();

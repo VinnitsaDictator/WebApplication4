@@ -27,13 +27,7 @@
         {
             base.OnModelCreating(modelBuilder);
 
-            // Настройка таблицы для User
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.ToTable("AspNetUsers"); // Убедитесь, что таблица называется "AspNetUsers"
-                entity.Property(e => e.Name).HasMaxLength(100).IsRequired(); // Поле Name
-                entity.Property(e => e.BirthDate).IsRequired(); // Поле BirthDate
-            });
+          
 
             // Пример данных для других сущностей
             modelBuilder.Entity<Film>().HasData(
