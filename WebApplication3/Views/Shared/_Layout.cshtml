@@ -30,7 +30,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Sessions" asp-action="Index">Sessions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Favorites" asp-action="Index">Favorite Films</a>
+                            <a class="nav-link" asp-area="" asp-controller="Favorites" asp-action="Index">Favorite Films (<span id="favoriteCount">0</span>)</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -60,6 +60,14 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.get('/Favorites/GetFavoriteCount', function (data) {
+                $('#favoriteCount').text(data);
+            });
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

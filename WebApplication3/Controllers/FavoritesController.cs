@@ -14,6 +14,12 @@ namespace WebApplication3.Controllers
         {
             _context = context;
         }
+        [HttpGet]
+        public int GetFavoriteCount()
+        {
+            var favoriteFilms = HttpContext.Session.GetObjectFromJson<List<Film>>("FavoriteFilms") ?? new List<Film>();
+            return favoriteFilms.Count;
+        }
 
         public IActionResult Index()
         {
