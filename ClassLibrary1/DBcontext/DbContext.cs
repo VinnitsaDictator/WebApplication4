@@ -18,7 +18,7 @@
             base.OnConfiguring(optionsBuilder);
             if (!optionsBuilder.IsConfigured)
             {
-                var str = "Server=(localdb)\\mssqllocaldb;Database=WebApplication3;Trusted_Connection=True;MultipleActiveResultSets=true";
+                var str = "workstation id=matviy161.mssql.somee.com;packet size=4096;user id=Montecarlo_SQLLogin_1;pwd=yo426335c6;data source=matviy161.mssql.somee.com;persist security info=False;initial catalog=matviy161;TrustServerCertificate=True";
                 optionsBuilder.UseSqlServer(str);
             }
         }

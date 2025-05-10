@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplication3.Models;
 
+
 namespace WebApplication3.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
