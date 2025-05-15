@@ -33,10 +33,17 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string searchQuery)
     {
-       
-        return View(context.Films.ToList());
+        var films = context.Films.AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchQuery))
+        {
+            films = films.Where(f => EF.Functions.Like(f.Title.ToLower(), $"%{searchQuery.ToLower()}%"));
+        }
+
+        ViewData["SearchQuery"] = searchQuery;
+        return View(films.ToList());
     }
     // GET: HomeController/CreateFilm
     [HttpGet]
@@ -58,4 +65,5 @@ public class HomeController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+    
 }

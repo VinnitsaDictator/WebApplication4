@@ -9,7 +9,10 @@
 <p>
     <a asp-action="CreateFilm" class="btn btn-primary">Добавить фильм</a>
 </p>
-
+<form method="get" asp-action="Index">
+    <input type="text" name="searchQuery" value="@ViewData["SearchQuery"]" placeholder="Введите название фильма" />
+    <button type="submit">Поиск</button>
+</form>
 @foreach (var item in Model)
 {
     <div class="movie-container">
@@ -23,7 +26,7 @@
         </div>
         <div class="movie-actions">
             <button class="btn btn-primary">Купить билет</button>
-            <button class="btn btn-secondary">Смотреть трейлер</button>
+            <a href="@item.TrailerUrl" target="_blank" class="btn btn-secondary">Смотреть трейлер</a>
             <a asp-action="AddToFavorites" asp-controller="Favorites" asp-route-id="@item.Id" class="btn btn-success">Добавить в избранное</a>
         </div>
     </div>
