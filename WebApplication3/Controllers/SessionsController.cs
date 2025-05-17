@@ -68,6 +68,37 @@ namespace WebApplication3.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        // GET: Sessions/Edit/5
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var session = await _context.Sessions.FindAsync(id);
+            if (session == null) return NotFound();
+
+            ViewBag.Films = new SelectList(_context.Films, "Id", "Title", session.FilmId);
+            return View(session);
+        }
+
+        // POST: Sessions/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FilmId,StartTime,EndTime,Hall")] Session session)
+        {
+            if (id != session.Id) return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Films = new SelectList(_context.Films, "Id", "Title", session.FilmId);
+                return View(session);
+            }
+
+            _context.Update(session);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
 

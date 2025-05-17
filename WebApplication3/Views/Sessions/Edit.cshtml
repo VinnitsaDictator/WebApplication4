@@ -1,0 +1,34 @@
+﻿@model WebApplication3.Models.Session
+
+@{
+    ViewData["Title"] = "Редактировать сессию";
+}
+
+<h2>Редактировать сессию</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="FilmId" class="control-label"></label>
+        <select asp-for="FilmId" class="form-control" asp-items="ViewBag.Films"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input asp-for="Date" class="form-control" type="datetime-local" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Hall" class="control-label"></label>
+        <input asp-for="Hall" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
