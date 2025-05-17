@@ -13,14 +13,14 @@ namespace WebApplication3.Models
         public int FilmId { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [MaxLength(100)]
         public string Hall { get; set; }
 
         [Required]
         [Range(0.01, 1000.00)]
         public decimal Price { get; set; }
 
-        public Film Film { get; set; }
+        public Film? Film { get; set; }
     }
 
 }

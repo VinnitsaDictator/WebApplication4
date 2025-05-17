@@ -6,6 +6,11 @@
 <h1>Create New Session</h1>
 
 <form class="row g-3" asp-action="CreateSession" method="post">
+
+    <div asp-validation-summary="All">
+        <span>Please correct the following errors</span>
+    </div>
+
     <div class="col-md-6">
         <label class="form-label">Film</label>
         <select asp-for="FilmId" class="form-control" asp-items="ViewBag.Films"></select>
@@ -35,6 +40,7 @@
     </div>
 </form>
 
+<partial name="_ValidationScriptsPartial" />
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

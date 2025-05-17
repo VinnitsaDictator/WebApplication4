@@ -6,7 +6,7 @@
         <h6 class="card-subtitle mb-2 text-muted">@Model.Date.ToString("dd.MM.yyyy HH:mm")</h6>
         <p class="card-text"><strong>Зал:</strong> @Model.Hall</p>
         <p class="card-text"><strong>Цена:</strong> @Model.Price.ToString("C")</p>
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+        <a asp-controller="Sessions" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@Model.Id" data-bs-title="@Model.Film.Title">Удалить</button>
     </div>
 </div>
