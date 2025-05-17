@@ -84,9 +84,8 @@ namespace WebApplication3.Controllers
         // POST: Sessions/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FilmId,StartTime,EndTime,Hall")] Session session)
+        public async Task<IActionResult> Edit([FromBody] Session session)
         {
-            if (id != session.Id) return NotFound();
 
             if (!ModelState.IsValid)
             {
